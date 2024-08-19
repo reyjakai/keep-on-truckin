@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Keep On Truckin"
+config/description="Just gotta keep on truckin'"
+config/version="0.0.1"
 run/main_scene="res://scenes/space.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"

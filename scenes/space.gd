@@ -27,9 +27,9 @@ var hovering_jukebox: bool:
 func _ready() -> void:
 	amount_per_speed_bar = MAX_SPEED / MAX_SPEED_BARS
 	
-	await get_tree().create_timer(2.0).timeout
-	Globals.player_money = 1000
-	Globals.tutorial_completed = true
+	#await get_tree().create_timer(2.0).timeout
+	#Globals.player_money = 1000
+	#Globals.tutorial_completed = true
 	
 	if Globals.tutorial_completed == true:
 		start_next_day()
@@ -65,10 +65,16 @@ func start_next_day() -> void:
 	
 	# All the code needed to reset the entire map.
 	_clear_all_objects()
-	warp_gate = null
+	
+	# create a new warp gate
+	var new_warp_gate: WarpGate = Globals.warp_gate_packed_scene.instantiate()
+	$SpaceItems.add_child(new_warp_gate)
+	
+	new_warp_gate.global_position = Vector2(920, -20000)
+	warp_gate = new_warp_gate
 	
 	# Play daily dialogue
-	
+	_fade_in(1.0)
 
 func _clear_all_objects() -> void:
 	for child in $SpaceItems.get_children():

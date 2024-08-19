@@ -21,7 +21,7 @@ func _ready() -> void:
 		
 		cargo_items.append(cargo_item)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$HealthBar.global_position = Vector2(global_position.x - 64, global_position.y - 64)
 
 func update_health_bars() -> void:
@@ -62,7 +62,7 @@ func take_damage(amount: int, damage_position: Vector2, direction: Vector2) -> v
 	await get_tree().create_timer(damage_effect.lifetime).timeout
 	damage_effect.queue_free()
 
-func die(damage_position: Vector2, direction: Vector2) -> void:
+func die(damage_position: Vector2, _direction: Vector2) -> void:
 	$Sprite2D.visible = false
 	$HealthBar.visible = false
 	

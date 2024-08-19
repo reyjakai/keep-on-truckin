@@ -5,6 +5,8 @@ static var meteor_packed_scene: PackedScene = preload("res://scenes/meteor.tscn"
 static var damage_particle_emitter_packed_scene: PackedScene = preload("res://scenes/effects/laser_damage_effect.tscn")
 static var cargo_item_packed_scene: PackedScene = preload("res://scenes/cargo_items/cargo_item.tscn")
 
+static var warp_gate_packed_scene: PackedScene = preload("res://scenes/cargo_objects/warp_gate.tscn")
+
 static var e_key_texture: Texture2D = preload("res://assets/e_key.png")
 static var f_key_texture: Texture2D = preload("res://assets/e_key.png")
 
@@ -24,7 +26,7 @@ func update_time(seconds: int) -> void:
 
 func _ready() -> void:
 	music_player = AudioStreamPlayer.new()
-	music_player.bus = "Music"
+	#music_player.bus = "Music"
 	
 	add_child(music_player)
 
@@ -70,7 +72,7 @@ var music_songs: Array = [
 
 func play_sound_effect(sound_path: String, position: Vector2) -> void:
 	var audio_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	audio_player.bus = "SoundEffect"
+	#audio_player.bus = "SoundEffect"
 	add_child(audio_player)
 	audio_player.global_position = position
 	
@@ -82,7 +84,7 @@ func play_sound_effect(sound_path: String, position: Vector2) -> void:
 
 func play_randomized_sound_effect(sound_path: String, position: Vector2) -> void:
 	var audio_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	audio_player.bus = "SoundEffect"
+	#audio_player.bus = "SoundEffect"
 	add_child(audio_player)
 	audio_player.global_position = position
 	

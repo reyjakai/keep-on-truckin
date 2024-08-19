@@ -31,27 +31,21 @@ environment = SubResource("Environment_cjsxh")
 [node name="UI" parent="." instance=ExtResource("2_4pfvw")]
 
 [node name="JukeBoxOffOnButton" parent="UI/JukeBox" index="1"]
-modulate = Color(0.40862, 0.696902, 0.799325, 1)
 mouse_default_cursor_shape = 2
 
 [node name="JukeBoxPreviousButton" parent="UI/JukeBox/HBoxContainer" index="0"]
-modulate = Color(0.40862, 0.696902, 0.799325, 1)
 mouse_default_cursor_shape = 2
 
 [node name="JukeBoxPauseButton" parent="UI/JukeBox/HBoxContainer" index="1"]
-modulate = Color(0.40862, 0.696902, 0.799325, 1)
 mouse_default_cursor_shape = 2
 
 [node name="JukeBoxPlayButton" parent="UI/JukeBox/HBoxContainer" index="2"]
-modulate = Color(0.40862, 0.696902, 0.799325, 1)
 mouse_default_cursor_shape = 2
 
 [node name="JukeBoxNextButton" parent="UI/JukeBox/HBoxContainer" index="3"]
-modulate = Color(0.40862, 0.696902, 0.799325, 1)
 mouse_default_cursor_shape = 2
 
 [node name="JukeBoxSoundButton" parent="UI/JukeBox" index="3"]
-modulate = Color(0.40862, 0.696902, 0.799325, 1)
 mouse_default_cursor_shape = 2
 
 [node name="ParallaxLayer" type="Parallax2D" parent="."]
@@ -317,66 +311,36 @@ stretch_mode = 5
 
 [node name="SpaceJunk" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(908, -1665)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk2" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(958, -1792)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk3" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(903, -1868)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk4" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(929, -4209)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk5" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(996, -4259)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk6" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(904, -4301)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk7" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(944, -4409)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk8" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(1001, -4502)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceJunk9" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
 position = Vector2(941, -4560)
-min_number_of_items = null
-max_number_of_items = null
-max_health = null
 
 [node name="SpaceTrader" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("12_87e46")]
 position = Vector2(1094, -5951)
 
 [node name="WarpGate" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("15_3i6sf")]
 position = Vector2(828, -6960)
-
-[node name="WarpGate2" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("15_3i6sf")]
-position = Vector2(920, 290)
 
 [editable path="UI"]
 [editable path="UI/Dialogue"]

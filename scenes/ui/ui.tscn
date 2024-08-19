@@ -407,6 +407,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="Dialogue" parent="." instance=ExtResource("26_sad30")]
+visible = false
 
 [connection signal="mouse_entered" from="JukeBox" to="." method="_on_juke_box_mouse_entered"]
 [connection signal="mouse_exited" from="JukeBox" to="." method="_on_juke_box_mouse_exited"]

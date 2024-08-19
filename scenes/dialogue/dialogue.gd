@@ -7,16 +7,17 @@ const BOOPS_MAX_COUNT: int = 6
 const TIMER_SPEED = 0.03
 
 func _ready() -> void:
-	start_dialogue("res://assets/characters/Space-Daughter-Sickly-1-Hologram.png")
-	await read_dialogue("Ms. Karen", "Sup, idiot. Got my money? You owe us $500 or we'll mail you her ashes in a plastic bag.", false)
-	await read_dialogue("Space Daughter", "Daddy, is that you?", true)
-	await read_dialogue("Ms. Karen", "Hey there, sweetie. Yep, this is your amazing dad! What a brave, powerful man he is.", true)
-	await read_dialogue("Space Daughter", "Daddy, I can't feel my legs. Is that supposed to happen? I can't wait until we can go running together!", true)
-	await read_dialogue("Ms. Karen", "Don't worry, honey. Go back to the corner.", true)
-	await read_dialogue("Ms. Karen", "$500. Don't forget it, idiot.", false)
-	end_dialogue()
+	pass
+	#start_dialogue("res://assets/characters/Space-Daughter-Sickly-1-Hologram.png")
+	#await read_dialogue("Ms. Karen", "Sup, idiot. Got my money? You owe us $500 or we'll mail you her ashes in a plastic bag.", false)
+	#await read_dialogue("Space Daughter", "Daddy, is that you?", true)
+	#await read_dialogue("Ms. Karen", "Hey there, sweetie. Yep, this is your amazing dad! What a brave, powerful man he is.", true)
+	#await read_dialogue("Space Daughter", "Daddy, I can't feel my legs. Is that supposed to happen? I can't wait until we can go running together!", true)
+	#await read_dialogue("Ms. Karen", "Don't worry, honey. Go back to the corner.", true)
+	#await read_dialogue("Ms. Karen", "$500. Don't forget it, idiot.", false)
+	#end_dialogue()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if reading:
 		boop_count += 1
 		
@@ -37,8 +38,8 @@ func end_dialogue() -> void:
 	await tween.finished
 	queue_free()
 
-func read_dialogue(display_name: String, line: String, daughter_visible: bool) -> void:
-	if daughter_visible:
+func read_dialogue(display_name: String, line: String, _daughter_visible: bool) -> void:
+	if _daughter_visible:
 		await show_daughter()
 	else:
 		await hide_daughter()

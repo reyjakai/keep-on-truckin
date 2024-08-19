@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name WarpGate
 
-func _on_warp_area_2d_area_entered(area: Area2D) -> void:
+func _on_warp_area_2d_area_entered(_area: Area2D) -> void:
 	var space: Space = find_parent("Space")
 	
 	space.start_next_day()
