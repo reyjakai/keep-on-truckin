@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp4wb157hjon3"]
+
+[ext_resource type="Texture2D" uid="uid://dr8a1ch38v7xi" path="res://assets/Space_Nav_Parts_48px.png" id="1_dr225"]
+[ext_resource type="Script" path="res://scenes/cargo_items/space_junk.gd" id="1_rwt08"]
+[ext_resource type="PackedScene" uid="uid://cb1b1m0oy8po8" path="res://scenes/ui/health_bar.tscn" id="3_gyhkw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dd1k"]
+size = Vector2(30, 24)
+
+[node name="SpaceJunk" type="RigidBody2D"]
+collision_layer = 5
+mass = 40.0
+gravity_scale = 0.0
+script = ExtResource("1_rwt08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0dd1k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_dr225")
+region_enabled = true
+region_rect = Rect2(342, 105, 36, 30)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_gyhkw")]
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1024.0
+offset_top = -594.0
+offset_right = -896.0
+offset_bottom = -564.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1)
+
+[node name="HBoxContainer" parent="HealthBar" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker" parent="HealthBar/HBoxContainer" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker2" parent="HealthBar/HBoxContainer" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker3" parent="HealthBar/HBoxContainer" index="2"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker4" parent="HealthBar/HBoxContainer" index="3"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker5" parent="HealthBar/HBoxContainer" index="4"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker6" parent="HealthBar/HBoxContainer" index="5"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker7" parent="HealthBar/HBoxContainer" index="6"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker8" parent="HealthBar/HBoxContainer" index="7"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker9" parent="HealthBar/HBoxContainer" index="8"]
+metadata/_edit_lock_ = true
+
+[node name="JunkHealthTicker10" parent="HealthBar/HBoxContainer" index="9"]
+metadata/_edit_lock_ = true
+
+[editable path="HealthBar"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://7jynn6gr710a"]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_ekioi"]
+[ext_resource type="Texture2D" uid="uid://ba4ydn6m7vsk" path="res://assets/main_menu/menu_logo.png" id="1_og6ol"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekioi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_og6ol")
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -433.0
+offset_top = -332.0
+offset_right = 504.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartGameButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Quit Game"
+
+[connection signal="pressed" from="MenuButtons/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

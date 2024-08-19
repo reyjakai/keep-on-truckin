@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://khxflcfedye7"]
+
+[ext_resource type="Script" path="res://scenes/meteor.gd" id="1_b1gwh"]
+[ext_resource type="Texture2D" uid="uid://cxuu8fiwmldky" path="res://assets/FX_Fire01_Flame_Regular_6x4.png" id="2_0y4xc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtk7r"]
+radius = 5.0
+height = 18.0
+
+[node name="Meteor" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+mass = 100.0
+gravity_scale = 0.0
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_b1gwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_0y4xc")
+region_enabled = true
+region_rect = Rect2(6, 1, 36, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mtk7r")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

@@ -1,0 +1,382 @@
+[gd_scene load_steps=17 format=3 uid="uid://b610flxnkggrq"]
+
+[ext_resource type="PackedScene" uid="uid://bkx36butj1uyf" path="res://scenes/ship_cab.tscn" id="1_cw1r1"]
+[ext_resource type="Script" path="res://scenes/space.gd" id="1_rdsky"]
+[ext_resource type="PackedScene" uid="uid://bnknreeggivqh" path="res://scenes/ui/ui.tscn" id="2_4pfvw"]
+[ext_resource type="PackedScene" uid="uid://cn0jlvtnbb8sf" path="res://scenes/cargo_container.tscn" id="2_7mxh8"]
+[ext_resource type="Texture2D" uid="uid://8nk50r6cglh5" path="res://assets/spacebg.png" id="2_bxwvp"]
+[ext_resource type="PackedScene" uid="uid://dp4wb157hjon3" path="res://scenes/cargo_items/space_junk.tscn" id="5_10ig0"]
+[ext_resource type="Texture2D" uid="uid://y5yvou52ryu5" path="res://assets/w_key.png" id="5_bj882"]
+[ext_resource type="Theme" uid="uid://bfjnqechjppun" path="res://game_theme.tres" id="5_ecuhc"]
+[ext_resource type="Texture2D" uid="uid://dosp7p8bg5wi3" path="res://assets/s_key.png" id="6_h1woy"]
+[ext_resource type="Texture2D" uid="uid://cwaog61m62ngl" path="res://assets/a_key.png" id="7_xf2jq"]
+[ext_resource type="Texture2D" uid="uid://d0b7ikb7tfxsf" path="res://assets/d_key.png" id="8_ek06a"]
+[ext_resource type="Texture2D" uid="uid://un0pgbfs57qc" path="res://assets/spacebar_key.png" id="9_ospx8"]
+[ext_resource type="Texture2D" uid="uid://sk8j258yuy1t" path="res://assets/left_mouse_button.png" id="10_cgd6h"]
+[ext_resource type="PackedScene" uid="uid://bjbnqcudbahe2" path="res://scenes/cargo_objects/space_trader.tscn" id="12_87e46"]
+[ext_resource type="PackedScene" uid="uid://cadgvpp3iyrku" path="res://scenes/cargo_objects/warp_gate.tscn" id="15_3i6sf"]
+
+[sub_resource type="Environment" id="Environment_cjsxh"]
+background_mode = 1
+background_color = Color(0.497474, 0.497474, 0.497474, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.91664, 0.91664, 0.91664, 1)
+
+[node name="Space" type="Node2D"]
+script = ExtResource("1_rdsky")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cjsxh")
+
+[node name="UI" parent="." instance=ExtResource("2_4pfvw")]
+
+[node name="JukeBoxOffOnButton" parent="UI/JukeBox" index="1"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+mouse_default_cursor_shape = 2
+
+[node name="JukeBoxPreviousButton" parent="UI/JukeBox/HBoxContainer" index="0"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+mouse_default_cursor_shape = 2
+
+[node name="JukeBoxPauseButton" parent="UI/JukeBox/HBoxContainer" index="1"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+mouse_default_cursor_shape = 2
+
+[node name="JukeBoxPlayButton" parent="UI/JukeBox/HBoxContainer" index="2"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+mouse_default_cursor_shape = 2
+
+[node name="JukeBoxNextButton" parent="UI/JukeBox/HBoxContainer" index="3"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+mouse_default_cursor_shape = 2
+
+[node name="JukeBoxSoundButton" parent="UI/JukeBox" index="3"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+mouse_default_cursor_shape = 2
+
+[node name="ParallaxLayer" type="Parallax2D" parent="."]
+repeat_size = Vector2(500, 400)
+repeat_times = 16
+screen_offset = Vector2(1000, 600)
+
+[node name="SpaceBackground" type="TextureRect" parent="ParallaxLayer"]
+texture_filter = 3
+offset_right = 500.0
+offset_bottom = 400.0
+mouse_filter = 2
+texture = ExtResource("2_bxwvp")
+stretch_mode = 1
+
+[node name="ShipCab" type="Node2D" parent="."]
+
+[node name="ShipCab" parent="ShipCab" instance=ExtResource("1_cw1r1")]
+position = Vector2(913, 464)
+
+[node name="Camera2D" type="Camera2D" parent="ShipCab/ShipCab"]
+zoom = Vector2(2, 2)
+metadata/_edit_lock_ = true
+
+[node name="CargoContainer" parent="." instance=ExtResource("2_7mxh8")]
+position = Vector2(1036, -3159)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="SpaceItems" type="Node2D" parent="."]
+
+[node name="Tutorial" type="Control" parent="SpaceItems"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("5_ecuhc")
+
+[node name="DaughterLeukemiaLabel" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1003.0
+offset_top = 140.0
+offset_right = 1381.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 32
+text = "Your daughter is dying of Space AIDS"
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel2" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 984.0
+offset_top = -1002.0
+offset_right = 1478.0
+offset_bottom = -869.0
+theme_override_font_sizes/font_size = 32
+text = "Collect enough money to pay the shady space doctors for her next round of space therapy"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel3" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 937.0
+offset_top = -2389.0
+offset_right = 1431.0
+offset_bottom = -2324.0
+theme_override_font_sizes/font_size = 32
+text = "You can only carry 4 cargo items at a time."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel4" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 948.0
+offset_top = -2730.0
+offset_right = 1471.0
+offset_bottom = -2665.0
+theme_override_font_sizes/font_size = 32
+text = "To carry more, get 'yerself a cargo container"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel5" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1046.0
+offset_top = -3187.0
+offset_right = 1569.0
+offset_bottom = -3122.0
+theme_override_font_sizes/font_size = 32
+text = "<- Cargo Container.
+
+Connect to the top of the container."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel6" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 927.0
+offset_top = -4064.0
+offset_right = 1450.0
+offset_bottom = -3999.0
+theme_override_font_sizes/font_size = 32
+text = "Now get you some more space junk!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel7" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1054.0
+offset_top = -5047.0
+offset_right = 1286.0
+offset_bottom = -5010.0
+theme_override_font_sizes/font_size = 32
+text = "Slow down!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel8" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1057.0
+offset_top = -5376.0
+offset_right = 1572.0
+offset_bottom = -5311.0
+theme_override_font_sizes/font_size = 32
+text = "Traders will purchase all of your junk for money. "
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel9" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1083.0
+offset_top = -5835.0
+offset_right = 1598.0
+offset_bottom = -5770.0
+theme_override_font_sizes/font_size = 32
+text = "<- Space Trader
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DaughterLeukemiaLabel10" type="Label" parent="SpaceItems/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 993.0
+offset_top = -6989.0
+offset_right = 1468.0
+offset_bottom = -6924.0
+theme_override_font_sizes/font_size = 32
+text = "Head through the portal to keep on truckin..."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="SpaceItems/Tutorial"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MovementLabel" type="Label" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 626.0
+offset_top = 353.0
+offset_right = 820.0
+offset_bottom = 384.0
+theme_override_font_sizes/font_size = 32
+text = "Movement"
+
+[node name="Up" type="TextureRect" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 689.0
+offset_top = 379.0
+offset_right = 749.0
+offset_bottom = 443.0
+texture = ExtResource("5_bj882")
+stretch_mode = 5
+
+[node name="Down" type="TextureRect" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 689.0
+offset_top = 439.0
+offset_right = 749.0
+offset_bottom = 503.0
+texture = ExtResource("6_h1woy")
+stretch_mode = 5
+
+[node name="Left" type="TextureRect" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 633.0
+offset_top = 439.0
+offset_right = 693.0
+offset_bottom = 503.0
+texture = ExtResource("7_xf2jq")
+stretch_mode = 5
+
+[node name="Right" type="TextureRect" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 745.0
+offset_top = 439.0
+offset_right = 805.0
+offset_bottom = 503.0
+texture = ExtResource("8_ek06a")
+stretch_mode = 5
+
+[node name="Stop" type="Label" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 640.0
+offset_top = -490.0
+offset_right = 817.0
+offset_bottom = -459.0
+theme_override_font_sizes/font_size = 32
+text = "Slow/Stop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpaceBar" type="TextureRect" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 635.0
+offset_top = -455.0
+offset_right = 827.0
+offset_bottom = -391.0
+texture = ExtResource("9_ospx8")
+stretch_mode = 5
+
+[node name="ShootLasers" type="Label" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 484.0
+offset_top = -1522.0
+offset_right = 846.0
+offset_bottom = -1423.0
+theme_override_font_sizes/font_size = 32
+text = "Fire Lasers to collect cargo from space junk"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Mouse" type="TextureRect" parent="SpaceItems/Tutorial/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 725.0
+offset_top = -1595.0
+offset_right = 785.0
+offset_bottom = -1531.0
+texture = ExtResource("10_cgd6h")
+stretch_mode = 5
+
+[node name="TutorialJunk" type="Node2D" parent="SpaceItems/Tutorial"]
+
+[node name="SpaceJunk" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(908, -1665)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk2" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(958, -1792)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk3" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(903, -1868)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk4" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(929, -4209)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk5" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(996, -4259)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk6" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(904, -4301)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk7" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(944, -4409)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk8" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(1001, -4502)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceJunk9" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("5_10ig0")]
+position = Vector2(941, -4560)
+min_number_of_items = null
+max_number_of_items = null
+max_health = null
+
+[node name="SpaceTrader" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("12_87e46")]
+position = Vector2(1094, -5951)
+
+[node name="WarpGate" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("15_3i6sf")]
+position = Vector2(828, -6960)
+
+[node name="WarpGate2" parent="SpaceItems/Tutorial/TutorialJunk" instance=ExtResource("15_3i6sf")]
+position = Vector2(920, 290)
+
+[editable path="UI"]
+[editable path="UI/Dialogue"]

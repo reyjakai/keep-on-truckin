@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp8xgsp0ggexy"]
+
+[ext_resource type="Texture2D" uid="uid://du4qdjtia53ge" path="res://assets/panels/meter_pellet_yellow.png" id="1_npre1"]
+
+[node name="SpeedBar" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 72)
+texture = ExtResource("1_npre1")
+stretch_mode = 5

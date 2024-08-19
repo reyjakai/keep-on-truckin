@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do3nfo1s2dtee"
+path="res://.godot/imported/Load of a Lifetime.mp3-e0e7e8a118e8190063fb0cf75d5f2e14.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Load of a Lifetime.mp3"
+dest_files=["res://.godot/imported/Load of a Lifetime.mp3-e0e7e8a118e8190063fb0cf75d5f2e14.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

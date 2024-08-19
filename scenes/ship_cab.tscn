@@ -1,0 +1,196 @@
+[gd_scene load_steps=14 format=3 uid="uid://bkx36butj1uyf"]
+
+[ext_resource type="Script" path="res://scenes/ship_cab.gd" id="1_55q6q"]
+[ext_resource type="Texture2D" uid="uid://dr8a1ch38v7xi" path="res://assets/Space_Nav_Parts_48px.png" id="2_jmxig"]
+[ext_resource type="Shader" path="res://scenes/effects/cargo_container_outline.gdshader" id="2_qpr8v"]
+[ext_resource type="PackedScene" uid="uid://cm1mv2qoreuvf" path="res://scenes/button_prompt.tscn" id="3_bsnk7"]
+[ext_resource type="Texture2D" uid="uid://cxuu8fiwmldky" path="res://assets/FX_Fire01_Flame_Regular_6x4.png" id="4_bb24w"]
+[ext_resource type="Texture2D" uid="uid://cvq1dj2wgkxd8" path="res://assets/shift_key.png" id="5_f25rg"]
+[ext_resource type="Texture2D" uid="uid://dahobh25eykdt" path="res://assets/f_key.png" id="5_yic0y"]
+[ext_resource type="Texture2D" uid="uid://bfvw73hequum0" path="res://assets/right_mouse_button.png" id="6_b7ya1"]
+[ext_resource type="PackedScene" uid="uid://dcdh8uoyvuqin" path="res://scenes/effects/smoke_gpu_particle_emitter.tscn" id="8_qtu1x"]
+[ext_resource type="PackedScene" uid="uid://jixc6y6vnibi" path="res://scenes/cargo_items/CargoItemSlot.tscn" id="9_3j6kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju5tg"]
+size = Vector2(42, 87)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qniki"]
+height = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3sygc"]
+resource_local_to_scene = true
+shader = ExtResource("2_qpr8v")
+shader_parameter/top = true
+shader_parameter/left = true
+shader_parameter/right = true
+shader_parameter/bottom = true
+shader_parameter/topleft = true
+shader_parameter/topright = true
+shader_parameter/bottomleft = true
+shader_parameter/bottomright = true
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inside = false
+shader_parameter/enabled = false
+
+[node name="ShipCab" type="RigidBody2D"]
+collision_layer = 13
+input_pickable = true
+mass = 750.0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_55q6q")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_ju5tg")
+
+[node name="InteractionArea2D" type="Area2D" parent="."]
+collision_layer = 50
+collision_mask = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
+position = Vector2(0, 45)
+shape = SubResource("CapsuleShape2D_qniki")
+
+[node name="SmokeParticles" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" parent="SmokeParticles" instance=ExtResource("8_qtu1x")]
+position = Vector2(-24, -12)
+
+[node name="GPUParticles2D2" parent="SmokeParticles" instance=ExtResource("8_qtu1x")]
+position = Vector2(24, -12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_3sygc")
+texture = ExtResource("2_jmxig")
+region_enabled = true
+region_rect = Rect2(285, 0, 54, 96)
+
+[node name="ButtonPrompt" parent="." instance=ExtResource("3_bsnk7")]
+offset_left = 23.0
+offset_top = 14.0
+offset_right = 80.0
+offset_bottom = 42.0
+
+[node name="Key" parent="ButtonPrompt" index="0"]
+offset_left = 15.0
+offset_top = 3.0
+offset_right = 53.0
+offset_bottom = 19.0
+texture = ExtResource("5_yic0y")
+
+[node name="Label" parent="ButtonPrompt" index="2"]
+text = "Connect"
+metadata/_edit_lock_ = true
+
+[node name="DisconnectButtonPrompt" parent="." instance=ExtResource("3_bsnk7")]
+visible = false
+offset_left = 23.0
+offset_top = 14.0
+offset_right = 80.0
+offset_bottom = 42.0
+
+[node name="Key" parent="DisconnectButtonPrompt" index="0"]
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 19.0
+texture = ExtResource("5_f25rg")
+
+[node name="Key2" parent="DisconnectButtonPrompt" index="1"]
+visible = true
+offset_left = 63.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 20.0
+texture = ExtResource("6_b7ya1")
+
+[node name="Label" parent="DisconnectButtonPrompt" index="2"]
+text = "Disconnect"
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="DisconnectButtonPrompt"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 58.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="ChainSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 39)
+texture = ExtResource("2_jmxig")
+region_enabled = true
+region_rect = Rect2(69, 81, 6, 18)
+
+[node name="LaserSprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+texture = ExtResource("2_jmxig")
+region_enabled = true
+region_rect = Rect2(210, 18, 60, 12)
+
+[node name="LaserShootingPoints" type="Node2D" parent="."]
+
+[node name="LeftLaserPoint" type="Node2D" parent="LaserShootingPoints"]
+position = Vector2(-30, -25)
+
+[node name="RightLaserPoint" type="Node2D" parent="LaserShootingPoints"]
+position = Vector2(30, -25)
+
+[node name="Thrusters" type="Node2D" parent="."]
+visible = false
+
+[node name="ThrusterSprite" type="Sprite2D" parent="Thrusters"]
+texture_filter = 1
+position = Vector2(0, 10.5)
+texture = ExtResource("2_jmxig")
+region_enabled = true
+region_rect = Rect2(198, 57, 84, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="Thrusters"]
+texture_filter = 1
+position = Vector2(-35, 22)
+rotation = -3.14159
+texture = ExtResource("4_bb24w")
+hframes = 6
+vframes = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="Thrusters"]
+texture_filter = 1
+position = Vector2(34, 22)
+rotation = -3.14159
+texture = ExtResource("4_bb24w")
+hframes = 6
+vframes = 4
+
+[node name="CargoItemSlots" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CargoItemSlot" parent="CargoItemSlots" instance=ExtResource("9_3j6kc")]
+position = Vector2(-6, -8)
+metadata/_edit_lock_ = true
+
+[node name="CargoItemSlot2" parent="CargoItemSlots" instance=ExtResource("9_3j6kc")]
+position = Vector2(8, -8)
+metadata/_edit_lock_ = true
+
+[node name="CargoItemSlot3" parent="CargoItemSlots" instance=ExtResource("9_3j6kc")]
+position = Vector2(-6, 12)
+metadata/_edit_lock_ = true
+
+[node name="CargoItemSlot4" parent="CargoItemSlots" instance=ExtResource("9_3j6kc")]
+position = Vector2(8, 12)
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="InteractionArea2D" to="." method="_on_interaction_area_2d_area_entered"]
+[connection signal="area_exited" from="InteractionArea2D" to="." method="_on_interaction_area_2d_area_exited"]
+
+[editable path="ButtonPrompt"]
+[editable path="DisconnectButtonPrompt"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://jixc6y6vnibi"]
+
+[ext_resource type="Texture2D" uid="uid://be3gnipe1k31e" path="res://assets/Space_Nav_Parts.png" id="1_fmwhr"]
+
+[node name="CargoItemSlot" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_fmwhr")
+region_enabled = true
+region_rect = Rect2(132, 67, 8, 8)

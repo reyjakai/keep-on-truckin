@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjbnqcudbahe2"]
+
+[ext_resource type="Texture2D" uid="uid://dr8a1ch38v7xi" path="res://assets/Space_Nav_Parts_48px.png" id="1_iu0ox"]
+[ext_resource type="Script" path="res://scenes/cargo_objects/space_trader.gd" id="1_vfkkw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8732t"]
+size = Vector2(162, 702)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dplpp"]
+size = Vector2(595, 703)
+
+[node name="SpaceTrader" type="StaticBody2D"]
+collision_layer = 5
+script = ExtResource("1_vfkkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_iu0ox")
+region_enabled = true
+region_rect = Rect2(891, 0, 90, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8732t")
+
+[node name="InteractionArea2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dplpp")

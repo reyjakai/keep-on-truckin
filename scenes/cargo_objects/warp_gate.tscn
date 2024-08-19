@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cadgvpp3iyrku"]
+
+[ext_resource type="Texture2D" uid="uid://dr8a1ch38v7xi" path="res://assets/Space_Nav_Parts_48px.png" id="1_cp3nn"]
+[ext_resource type="Script" path="res://scenes/cargo_objects/warp_gate.gd" id="1_jsqjp"]
+[ext_resource type="Shader" path="res://scenes/effects/warp_gate_shader.gdshader" id="2_7su41"]
+[ext_resource type="Texture2D" uid="uid://8nk50r6cglh5" path="res://assets/spacebg.png" id="4_12r8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6dv7"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi0de"]
+size = Vector2(270, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_op70i"]
+shader = ExtResource("2_7su41")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 10
+shader_parameter/frequency = 2
+shader_parameter/speed = 5.0
+shader_parameter/thickness = 0.035
+shader_parameter/outline_thickness = 0.1
+shader_parameter/beam_difference = 1.0
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.014219, 0, 1.89007e-06, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(50, 20)
+
+[node name="WarpGate" type="StaticBody2D"]
+script = ExtResource("1_jsqjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-150, 0)
+shape = SubResource("RectangleShape2D_t6dv7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(150, 0)
+shape = SubResource("RectangleShape2D_t6dv7")
+
+[node name="WarpArea2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarpArea2D"]
+shape = SubResource("RectangleShape2D_mi0de")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -144.0
+offset_top = -1107.0
+offset_right = 144.0
+offset_bottom = -3.0
+texture = ExtResource("4_12r8i")
+stretch_mode = 1
+
+[node name="GatePortal" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_op70i")
+offset_left = -150.0
+offset_top = -37.0
+offset_right = 50.0
+offset_bottom = 13.0
+scale = Vector2(1.5, 1.5)
+
+[node name="GateLeft" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-150, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("1_cp3nn")
+region_enabled = true
+region_rect = Rect2(822, 678, 36, 36)
+
+[node name="GateRight" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(150, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("1_cp3nn")
+region_enabled = true
+region_rect = Rect2(822, 678, 36, 36)
+
+[connection signal="area_entered" from="WarpArea2D" to="." method="_on_warp_area_2d_area_entered"]

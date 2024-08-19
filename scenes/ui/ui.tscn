@@ -1,0 +1,422 @@
+[gd_scene load_steps=28 format=3 uid="uid://bnknreeggivqh"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_cw0t2"]
+[ext_resource type="Theme" uid="uid://bfjnqechjppun" path="res://game_theme.tres" id="1_jdun3"]
+[ext_resource type="Texture2D" uid="uid://c5v1gotrpqxx6" path="res://assets/panels/meter.png" id="2_6od2l"]
+[ext_resource type="Texture2D" uid="uid://bi6u8oc7vpodt" path="res://assets/panels/message_box_A_top_left.png" id="2_oicvc"]
+[ext_resource type="Texture2D" uid="uid://d4ebm631bmq6l" path="res://assets/panels/message_box_A_top_center.png" id="3_1fanx"]
+[ext_resource type="Texture2D" uid="uid://b6ncl0vidsy78" path="res://assets/panels/message_box_A_top_right.png" id="4_8qnam"]
+[ext_resource type="Texture2D" uid="uid://3o6onscu8opf" path="res://assets/panels/message_box_A_center_left.png" id="5_6mokk"]
+[ext_resource type="Texture2D" uid="uid://bsyegolvulmka" path="res://assets/panels/message_box_A_center.png" id="6_vvlw3"]
+[ext_resource type="Texture2D" uid="uid://fs45423bcsoo" path="res://assets/panels/message_box_A_center_right.png" id="7_71vip"]
+[ext_resource type="Texture2D" uid="uid://dfcwigceq562" path="res://assets/panels/message_box_A_bottom_left.png" id="8_d5yy2"]
+[ext_resource type="Texture2D" uid="uid://c787tdln521c3" path="res://assets/panels/message_box_A_bottom_center.png" id="9_77klc"]
+[ext_resource type="Texture2D" uid="uid://df4x1dxv5xghx" path="res://assets/panels/message_box_A_bottom_right.png" id="10_gx7rv"]
+[ext_resource type="PackedScene" uid="uid://dp8xgsp0ggexy" path="res://scenes/ui/speed_bar_increment.tscn" id="12_kjry4"]
+[ext_resource type="Texture2D" uid="uid://dso4thn3omb22" path="res://assets/jukebox/window.png" id="14_a8nyk"]
+[ext_resource type="Texture2D" uid="uid://lyjjntwhcebh" path="res://assets/jukebox/cash_dollars.png" id="14_etwtx"]
+[ext_resource type="Texture2D" uid="uid://3mi8ilfgohxq" path="res://assets/jukebox/power_A.png" id="15_3tcuu"]
+[ext_resource type="Texture2D" uid="uid://btgj7qqaq3na5" path="res://assets/jukebox/previous.png" id="16_7nsmx"]
+[ext_resource type="Texture2D" uid="uid://k70fwmid4pmh" path="res://assets/jukebox/pause.png" id="17_c6sqt"]
+[ext_resource type="Texture2D" uid="uid://da16k0jauukij" path="res://assets/jukebox/play.png" id="18_y7kb7"]
+[ext_resource type="Texture2D" uid="uid://dokiv5jovj014" path="res://assets/jukebox/next.png" id="19_5t3go"]
+[ext_resource type="Texture2D" uid="uid://co7ei4ngc5wct" path="res://assets/jukebox/sound.png" id="20_egr5l"]
+[ext_resource type="Texture2D" uid="uid://cssprrmchvdym" path="res://assets/jukebox/scrollbar_horizontal.png" id="21_fqhvq"]
+[ext_resource type="Texture2D" uid="uid://4acitv5en7ly" path="res://assets/jukebox/scrollbar_horizontal_scrubber_big.png" id="22_na5a8"]
+[ext_resource type="Texture2D" uid="uid://brttnft108q4l" path="res://assets/buttons/scrollbar_horizontal_left.png" id="23_xepns"]
+[ext_resource type="Texture2D" uid="uid://uv15jdlslkwj" path="res://assets/buttons/scrollbar_horizontal_right.png" id="24_jcwpg"]
+[ext_resource type="PackedScene" uid="uid://dvaeojlasx1ts" path="res://scenes/dialogue/dialogue.tscn" id="26_sad30"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2ej1"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_cw0t2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_jdun3")
+metadata/_edit_lock_ = true
+
+[node name="Info" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 1013.0
+offset_right = 929.0
+offset_bottom = 1074.0
+
+[node name="TimeLeftLabel" type="Label" parent="Control/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Time Left: 12:34"
+metadata/_edit_lock_ = true
+
+[node name="DistanceUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 67.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SpaceTexture" type="GridContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 226.0
+offset_bottom = -137.0
+grow_vertical = 2
+theme_override_constants/h_separation = -7
+theme_override_constants/v_separation = -1
+columns = 3
+
+[node name="TopLeft" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_oicvc")
+
+[node name="TopMiddle" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_1fanx")
+
+[node name="TopRight" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_8qnam")
+
+[node name="MiddleLeft" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource("5_6mokk")
+
+[node name="Middle" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource("6_vvlw3")
+
+[node name="MiddleRight" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource("7_71vip")
+
+[node name="BottomLeft" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("8_d5yy2")
+
+[node name="BottomMiddle" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("9_77klc")
+
+[node name="BottomRight" type="TextureRect" parent="SpaceTexture"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("10_gx7rv")
+
+[node name="DistanceToWarpGateSlider" type="VSlider" parent="SpaceTexture"]
+layout_mode = 2
+
+[node name="SpeedProgressBar" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(384, 72)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+offset_right = 384.0
+grow_vertical = 0
+texture = ExtResource("2_6od2l")
+
+[node name="SpeedBars" type="HBoxContainer" parent="SpeedProgressBar"]
+layout_mode = 0
+offset_left = 108.0
+offset_right = 354.0
+offset_bottom = 72.0
+theme_override_constants/separation = -30
+
+[node name="SpeedBar" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar2" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar3" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar4" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar5" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar6" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar7" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar8" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar9" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar10" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar11" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="SpeedBar12" parent="SpeedProgressBar/SpeedBars" instance=ExtResource("12_kjry4")]
+modulate = Color(0.384314, 0.384314, 0.384314, 0.462745)
+layout_mode = 2
+
+[node name="MoneyBox" type="HBoxContainer" parent="SpeedProgressBar"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = -47.0
+offset_right = 343.0
+offset_bottom = -1.0
+theme = ExtResource("1_jdun3")
+
+[node name="TextureRect" type="TextureRect" parent="SpeedProgressBar/MoneyBox"]
+layout_mode = 2
+texture = ExtResource("14_etwtx")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SpeedProgressBar/MoneyBox"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "00000"
+
+[node name="JukeBox" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_jdun3")
+texture = ExtResource("14_a8nyk")
+expand_mode = 1
+
+[node name="SongNameLabel" type="Label" parent="JukeBox"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_top = 15.0
+offset_right = 226.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Keep On Truckin'"
+
+[node name="JukeBoxOffOnButton" type="TextureButton" parent="JukeBox"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 155.0
+offset_top = 144.0
+offset_right = 227.0
+offset_bottom = 217.0
+grow_horizontal = 2
+texture_normal = ExtResource("15_3tcuu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="JukeBox"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 129.0
+offset_right = 378.0
+offset_bottom = 236.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="JukeBoxPreviousButton" type="TextureButton" parent="JukeBox/HBoxContainer"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture_normal = ExtResource("16_7nsmx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="JukeBoxPauseButton" type="TextureButton" parent="JukeBox/HBoxContainer"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture_normal = ExtResource("17_c6sqt")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="JukeBoxPlayButton" type="TextureButton" parent="JukeBox/HBoxContainer"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture_normal = ExtResource("18_y7kb7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="JukeBoxNextButton" type="TextureButton" parent="JukeBox/HBoxContainer"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture_normal = ExtResource("19_5t3go")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="JukeBoxSoundButton" type="TextureButton" parent="JukeBox"]
+modulate = Color(0.40862, 0.696902, 0.799325, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_left = 26.0
+offset_top = 60.0
+offset_right = 98.0
+offset_bottom = 132.0
+toggle_mode = true
+texture_normal = ExtResource("20_egr5l")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VolumeTexture" type="TextureRect" parent="JukeBox"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 75.0
+offset_right = 481.0
+offset_bottom = 120.0
+texture = ExtResource("21_fqhvq")
+
+[node name="VSlider" type="HSlider" parent="JukeBox/VolumeTexture"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -3.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("22_na5a8")
+theme_override_icons/grabber_highlight = ExtResource("22_na5a8")
+theme_override_icons/grabber_disabled = ExtResource("22_na5a8")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_f2ej1")
+max_value = 1.0
+step = 0.1
+value = 0.5
+editable = false
+scrollable = false
+metadata/_edit_lock_ = true
+
+[node name="VolumeDownButton" type="TextureButton" parent="JukeBox/VolumeTexture"]
+layout_mode = 0
+offset_top = -3.0
+offset_right = 48.0
+offset_bottom = 45.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("23_xepns")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VolumeUpButton" type="TextureButton" parent="JukeBox/VolumeTexture"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = -3.0
+offset_right = 384.0
+offset_bottom = 45.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("24_jcwpg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VSlider" type="VSlider" parent="."]
+offset_right = 16.0
+offset_bottom = 8.0
+
+[node name="ScreenFader" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Dialogue" parent="." instance=ExtResource("26_sad30")]
+
+[connection signal="mouse_entered" from="JukeBox" to="." method="_on_juke_box_mouse_entered"]
+[connection signal="mouse_exited" from="JukeBox" to="." method="_on_juke_box_mouse_exited"]
+[connection signal="pressed" from="JukeBox/JukeBoxOffOnButton" to="." method="_on_juke_box_off_on_button_pressed"]
+[connection signal="pressed" from="JukeBox/HBoxContainer/JukeBoxPreviousButton" to="." method="_on_juke_box_previous_button_pressed"]
+[connection signal="pressed" from="JukeBox/HBoxContainer/JukeBoxPauseButton" to="." method="_on_juke_box_pause_button_pressed"]
+[connection signal="pressed" from="JukeBox/HBoxContainer/JukeBoxPlayButton" to="." method="_on_juke_box_play_button_pressed"]
+[connection signal="pressed" from="JukeBox/HBoxContainer/JukeBoxNextButton" to="." method="_on_juke_box_next_button_pressed"]
+[connection signal="pressed" from="JukeBox/JukeBoxSoundButton" to="." method="_on_juke_box_sound_button_pressed"]
+[connection signal="pressed" from="JukeBox/VolumeTexture/VolumeDownButton" to="." method="_on_volume_down_button_pressed"]
+[connection signal="pressed" from="JukeBox/VolumeTexture/VolumeUpButton" to="." method="_on_volume_up_button_pressed"]
+
+[editable path="Dialogue"]

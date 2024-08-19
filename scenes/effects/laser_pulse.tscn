@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmov30of3ck0t"]
+
+[ext_resource type="Script" path="res://scenes/effects/laser_pulse.gd" id="1_53rok"]
+[ext_resource type="Texture2D" uid="uid://be3gnipe1k31e" path="res://assets/Space_Nav_Parts.png" id="1_t15dg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtk7r"]
+radius = 1.0
+height = 10.0
+
+[node name="LaserPulse" type="RigidBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 0.0
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_53rok")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_t15dg")
+region_enabled = true
+region_rect = Rect2(344, 257, 5, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mtk7r")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
